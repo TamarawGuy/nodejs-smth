@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 
 let template = await readFile(new URL("index.html", import.meta.url), "utf-8");
 
@@ -12,3 +12,7 @@ for (const [k, v] of Object.entries(data)) {
 }
 
 console.log(template);
+
+await writeFile(new URL('template.html', import.meta.url), template);
+
+
